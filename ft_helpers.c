@@ -6,7 +6,7 @@
 /*   By: nfujisak <nfujisak@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 16:54:43 by nfujisak          #+#    #+#             */
-/*   Updated: 2024/05/10 20:27:32 by nfujisak         ###   ########.fr       */
+/*   Updated: 2024/05/10 21:04:47 by nfujisak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_tolower_all(char *str)
 		str[i] = ft_tolower(str[i]);
 		i++;
 	}
-	return(str);
+	return (str);
 }
 
 char	*ft_toupper_all(char *str)
@@ -41,5 +41,5 @@ char	*ft_toupper_all(char *str)
 		str[i] = ft_toupper(str[i]);
 		i++;
 	}
-	return(str);
+	return (str);
 }

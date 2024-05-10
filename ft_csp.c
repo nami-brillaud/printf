@@ -1,46 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_helpers.c                                       :+:      :+:    :+:   */
+/*   ft_csp.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nfujisak <nfujisak@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/08 16:54:43 by nfujisak          #+#    #+#             */
+/*   Created: 2024/05/09 15:04:10 by nfujisak          #+#    #+#             */
 /*   Updated: 2024/05/09 19:46:23 by nfujisak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int	ft_putchar_n(const char c)
-{
-	write(1, &c, 1);
+int c_process(int nb)
+{	
+	unsigned char	uc_ap;
+
+	uc_ap = (unsigned char)nb;
+	write(1, &uc_ap, 1);
 	return (1);
 }
 
-char	*ft_tolower_all(char *str)
+int	s_process(char *str)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		str[i] = ft_tolower(str[i]);
-		i++;
-	}
-	return(str);
+	if (!str)
+		str = "(null)";
+	ft_putstr_fd(str, 1);
+	return(ft_strlen(str));
 }
 
-// int	num_strchr(const char *s, int c)
-// {
-// 	int	i;
+int	p_process(void *ptr)
+{
+	char	*str;
+	int		len;
 
-// 	i = 0;
-// 	if (c == '\0')
-// 		return (-1);
-// 	while (*(s + i) && *(s + i) != c)
-// 		i++;
-// 	if (*(s + i) == c)
-// 		return (i);
-// 	return (-1);
-// }
+	str = ft_tolower_all(base_start((unsigned long long)ptr, 16));//you want to convert ptr directly
+	len = ft_strlen(str);
+	ft_putstr_fd("0x", 1);
+	ft_putstr_fd(str, 1);
+	free(str);
+	return (len + 2);	
+}

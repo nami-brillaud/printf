@@ -6,13 +6,13 @@
 /*   By: nfujisak <nfujisak@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 15:04:10 by nfujisak          #+#    #+#             */
-/*   Updated: 2024/05/10 18:23:27 by nfujisak         ###   ########.fr       */
+/*   Updated: 2024/05/10 21:03:27 by nfujisak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int c_process(int nb)
+int	c_process(int nb)
 {	
 	unsigned char	uc_ap;
 
@@ -26,7 +26,7 @@ int	s_process(char *str)
 	if (!str)
 		str = "(null)";
 	ft_putstr_fd(str, 1);
-	return(ft_strlen(str));
+	return (ft_strlen(str));
 }
 
 int	p_process(void *ptr)
@@ -34,10 +34,10 @@ int	p_process(void *ptr)
 	char	*str;
 	int		len;
 
-	str = ft_tolower_all(base_start((unsigned long long)ptr, 16));//you want to convert ptr directly
+	str = ft_tolower_all(base_start((unsigned long long)ptr, 16));
 	len = ft_strlen(str);
 	ft_putstr_fd("0x", 1);
 	ft_putstr_fd(str, 1);
 	free(str);
-	return (len + 2);	
+	return (len + 2);
 }

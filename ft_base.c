@@ -6,11 +6,11 @@
 /*   By: nfujisak <nfujisak@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 18:53:57 by nfujisak          #+#    #+#             */
-/*   Updated: 2024/05/10 16:12:21 by nfujisak         ###   ########.fr       */
+/*   Updated: 2024/05/10 18:29:59 by nfujisak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 char	*base_change(unsigned long long ptr_alt, int base, char *str, int digits)
 {
@@ -26,7 +26,7 @@ char	*base_change(unsigned long long ptr_alt, int base, char *str, int digits)
 	return (str); //completed string
 }
 
-char	*base_start(unsigned long long ptr, int base)//is ul sufficient?
+char	*base_start(unsigned long long ptr, int base)//is ull because pointer so you never know
 {
 	unsigned long long ptr_alt;
 	char		*str;

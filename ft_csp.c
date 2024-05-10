@@ -6,11 +6,11 @@
 /*   By: nfujisak <nfujisak@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 15:04:10 by nfujisak          #+#    #+#             */
-/*   Updated: 2024/05/09 19:46:23 by nfujisak         ###   ########.fr       */
+/*   Updated: 2024/05/10 18:23:27 by nfujisak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 int c_process(int nb)
 {	

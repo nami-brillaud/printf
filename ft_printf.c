@@ -6,13 +6,12 @@
 /*   By: nfujisak <nfujisak@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:55:20 by nfujisak          #+#    #+#             */
-/*   Updated: 2024/05/10 17:54:56 by nfujisak         ###   ########.fr       */
+/*   Updated: 2024/05/10 20:55:44 by nfujisak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
-//printf("Hello %d", 5)
 int	specifier_check(const char format, va_list ap) //looks at one character at the time
 {
 	int		n_add;
@@ -27,13 +26,15 @@ int	specifier_check(const char format, va_list ap) //looks at one character at t
 	else if (format == 'd' || format == 'i')
 		n_add += d_i_process(va_arg(ap, int));
 	else if (format == 'u')
-		n_add += u_process(va_arg(ap, unsigned int));
-	// else if (format == 'x')
-	// 	n_add += x_process(&ap);
-	// else if (format == 'X')
-	// 	n_add += bigx_process(&ap);
-	// else
-	// 	n_add += percen_addt_process(&ap);
+		n_add += u_process((unsigned long)va_arg(ap, unsigned int)); //??
+	else if (format == 'x')
+		n_add += x_process(va_arg(ap, unsigned int));
+	else if (format == 'X')
+		n_add += bigx_process(va_arg(ap, unsigned int));
+	else if (format == '%')
+		n_add = ft_putchar_n('%');
+	else
+		return (-1);
 	return (n_add);
 }
 
@@ -58,17 +59,30 @@ int	ft_printf(const char *format, ...)
 	return (n);
 }
 
-int	main(void)
-{
-	void *p = NULL;
-	char c = 'i';
-	char s[] = "haha";
-	int d = INT_MIN;
-	unsigned int u = -20;
-	ft_printf("Hello c %c\n s %s\n p %p\n d %d\n u %u\n", c, s, p, d, u);
-	system("leaks a.out");
-	return (0);
-}
+// #include <stdio.h>
+// #include <assert.h>
+// int	main(void)
+// {
+// 	// void *p = NULL;
+// 	// char c = 'i';
+// 	// char s[] = "haha";
+// 	// int d = INT_MIN;
+// 	// unsigned int u = -10;
+// 	// unsigned int x = 140;
+// 	// unsigned int X = 140;
+// 	/* Mixing  output */
+// 	// ft_printf("Beginning\n c %c\n s %s\n p %p\n d %d\n u %u\n x %x\n X %X\n % %\n End\n", c, s, p, d, u, x, X);
+// 	/* Random asserts */
+// 	// assert(ft_printf("%p\n", p) == printf("%p\n", p));
+// 	// assert(ft_printf("%p\n", s) == printf("%p\n", s));
+// 	// assert(ft_printf("%d\n", INT_MIN) == printf("%d\n", INT_MIN));
+// 	// assert(ft_printf("%d\n", INT_MIN - 1) == printf("%d\n", INT_MIN - 1));
+// 	/* Direct gives big random numbers*/
+// 	// ft_printf("directly u %u\n", -10.5);
+// 	// printf(NULL);
+// 	// system("leaks a.out");
+// 	return (0);
+// }
 
 // void	initialize_set(t_arg *set, int n)
 // {

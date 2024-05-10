@@ -6,7 +6,7 @@
 /*   By: nfujisak <nfujisak@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:55:20 by nfujisak          #+#    #+#             */
-/*   Updated: 2024/05/09 20:00:54 by nfujisak         ###   ########.fr       */
+/*   Updated: 2024/05/10 17:54:56 by nfujisak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ int	specifier_check(const char format, va_list ap) //looks at one character at t
 		n_add += s_process(va_arg(ap, char *));
 	else if (format == 'p')
 		n_add += p_process(va_arg(ap, void *));
-	// else if (format == 'd' || format == 'i')
-	// 	n_add += d_process(&ap);
-	// else if (format == 'u')
-	// 	n_add += u_process(&ap);
+	else if (format == 'd' || format == 'i')
+		n_add += d_i_process(va_arg(ap, int));
+	else if (format == 'u')
+		n_add += u_process(va_arg(ap, unsigned int));
 	// else if (format == 'x')
 	// 	n_add += x_process(&ap);
 	// else if (format == 'X')
@@ -60,9 +60,13 @@ int	ft_printf(const char *format, ...)
 
 int	main(void)
 {
-	char s[] = "yo";
-	ft_printf("Hello %p", s);
-	// system("leaks a.out");
+	void *p = NULL;
+	char c = 'i';
+	char s[] = "haha";
+	int d = INT_MIN;
+	unsigned int u = -20;
+	ft_printf("Hello c %c\n s %s\n p %p\n d %d\n u %u\n", c, s, p, d, u);
+	system("leaks a.out");
 	return (0);
 }
 

@@ -6,11 +6,11 @@
 #    By: nfujisak <nfujisak@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/06 16:53:15 by nfujisak          #+#    #+#              #
-#    Updated: 2024/05/09 19:49:05 by nfujisak         ###   ########.fr        #
+#    Updated: 2024/05/10 16:30:56 by nfujisak         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	= ft_helpers.c ft_printf.c ft_csp.c ft_base.c
+SRCS	= ft_helpers.c ft_printf.c ft_csp.c ft_base.c ft_diux.c
 
 OBJS	= $(SRCS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: nfujisak <nfujisak@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 18:53:57 by nfujisak          #+#    #+#             */
-/*   Updated: 2024/05/09 19:49:27 by nfujisak         ###   ########.fr       */
+/*   Updated: 2024/05/10 16:12:21 by nfujisak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ char	*base_change(unsigned long long ptr_alt, int base, char *str, int digits)
 {
 	while (ptr_alt != 0)
 	{
-		if (ptr_alt < 10)
-			str[digits - 1] = (ptr_alt % base) + '0'; //-1 for the null. DECIMAL
+		if ((ptr_alt % 16) < 10)
+			str[digits - 1] = (ptr_alt % base) + 48; //-1 for the null. DECIMAL
 		else //e.g. 16
 			str[digits - 1] = (ptr_alt % base) + 55; //why 55??. HEXADECIMAL
 		ptr_alt = ptr_alt / base; //go to next digit

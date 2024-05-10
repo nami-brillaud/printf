@@ -6,44 +6,44 @@
 /*   By: nfujisak <nfujisak@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 18:53:57 by nfujisak          #+#    #+#             */
-/*   Updated: 2024/05/10 18:29:59 by nfujisak         ###   ########.fr       */
+/*   Updated: 2024/05/10 21:02:12 by nfujisak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*base_change(unsigned long long ptr_alt, int base, char *str, int digits)
+char	*base_change(unsigned long long ptr_alt, int base, char *str, int dig)
 {
 	while (ptr_alt != 0)
 	{
 		if ((ptr_alt % 16) < 10)
-			str[digits - 1] = (ptr_alt % base) + 48; //-1 for the null. DECIMAL
-		else //e.g. 16
-			str[digits - 1] = (ptr_alt % base) + 55; //why 55??. HEXADECIMAL
-		ptr_alt = ptr_alt / base; //go to next digit
-		digits--;
+			str[dig - 1] = (ptr_alt % base) + 48;
+		else
+			str[dig - 1] = (ptr_alt % base) + 55;
+		ptr_alt = ptr_alt / base;
+		dig--;
 	}
-	return (str); //completed string
+	return (str);
 }
 
-char	*base_start(unsigned long long ptr, int base)//is ull because pointer so you never know
+char	*base_start(unsigned long long ptr, int base)
 {
-	unsigned long long ptr_alt;
-	char		*str;
-	int			digits;
+	unsigned long long	ptr_alt;
+	char				*str;
+	int					digits;
 
 	digits = 0;
 	ptr_alt = ptr;
-	if (ptr == 0) //because it's an unsigned long
-		return(ft_strdup("0"));
-	while (ptr != 0) //dividing
+	if (ptr == 0)
+		return (ft_strdup("0"));
+	while (ptr != 0)
 	{
 		ptr = ptr / base;
-		digits++; //counting number of digits to allocate
+		digits++;
 	}
-	str = ft_calloc(digits + 1, sizeof(char)); //1 for the null. where is the free?
+	str = ft_calloc(digits + 1, sizeof(char));
 	if (!str)
-		return (0); //0 because we are returning int!
+		return (0);
 	str = base_change(ptr_alt, base, str, digits);
 	return (str);
 }

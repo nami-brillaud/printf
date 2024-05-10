@@ -6,13 +6,13 @@
 /*   By: nfujisak <nfujisak@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:55:20 by nfujisak          #+#    #+#             */
-/*   Updated: 2024/05/10 20:55:44 by nfujisak         ###   ########.fr       */
+/*   Updated: 2024/05/10 21:06:06 by nfujisak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	specifier_check(const char format, va_list ap) //looks at one character at the time
+int	specifier_check(const char format, va_list ap)
 {
 	int		n_add;
 
@@ -26,7 +26,7 @@ int	specifier_check(const char format, va_list ap) //looks at one character at t
 	else if (format == 'd' || format == 'i')
 		n_add += d_i_process(va_arg(ap, int));
 	else if (format == 'u')
-		n_add += u_process((unsigned long)va_arg(ap, unsigned int)); //??
+		n_add += u_process((unsigned long)va_arg(ap, unsigned int));
 	else if (format == 'x')
 		n_add += x_process(va_arg(ap, unsigned int));
 	else if (format == 'X')
@@ -52,7 +52,7 @@ int	ft_printf(const char *format, ...)
 		if (*format != '%')
 			n += ft_putchar_n(*format);
 		else
-			n += specifier_check(*(++format), ap); //you encounter the %, then advance of one step
+			n += specifier_check(*(++format), ap);
 		format++;
 	}
 	va_end(ap);
@@ -71,7 +71,8 @@ int	ft_printf(const char *format, ...)
 // 	// unsigned int x = 140;
 // 	// unsigned int X = 140;
 // 	/* Mixing  output */
-// 	// ft_printf("Beginning\n c %c\n s %s\n p %p\n d %d\n u %u\n x %x\n X %X\n % %\n End\n", c, s, p, d, u, x, X);
+// 	// ft_printf("Beginning\n c %c\n s %s\n p %p\n d %d\n 
+//u %u\n x %x\n X %X\n % %\n End\n", c, s, p, d, u, x, X);
 // 	/* Random asserts */
 // 	// assert(ft_printf("%p\n", p) == printf("%p\n", p));
 // 	// assert(ft_printf("%p\n", s) == printf("%p\n", s));
@@ -82,67 +83,4 @@ int	ft_printf(const char *format, ...)
 // 	// printf(NULL);
 // 	// system("leaks a.out");
 // 	return (0);
-// }
-
-// void	initialize_set(t_arg *set, int n)
-// {
-// 	set->flag[0] = 0;
-// 	set->flag[1] = 0;
-// 	set->width = -1; //idk why
-// 	set->precision = -1; //idk why
-// 	set->specifier = -1; //character so ok to put number
 // 
-// }
-// 
-// void	arg_processor(const char **start, const char **format, int *n, va_list *ap) //is it void
-// {
-// 	int		num;
-// 	t_arg	set;
-// 
-// 	(*format)++;
-// 	initialize_set(&set, *n); //you'll need n at some point later
-// 	while ((num = num_strchr("0-", **format)) >= 0)//count_strchr returns an int indicating 
-// 	//le combientieme among the string  matched
-// 	{
-// 		set.flag[num] = 1; //if there is the flag, set to 1
-// 		(*format)++; //update each character here to run it thru num_strchr
-// 	}
-// 	set.width = ft_str_to_num(the 10 in your string above);
-// 	if (**format == '.')
-// 	{
-// 		(*format++); //skip the dot
-// 		set.precision = ft_str_to_num(the 5 in your string above);
-// 	}
-// 	set.specifier = num_strchr("cspdiuxX%", **format);
-// 	//add code to update n
-// 	}
-// 
-// void	comment_printer(const char **start, const char **format, int *n)
-// {
-// 	while (**format != '%' && **format)
-// 		(*format)++;
-// 	write(1, *start, *format - *start);
-// 	*n += *format - *start;
-// }
-// 
-// int	ft_printf(const char *format, ...)
-// {
-// 	va_list	ap;
-// 	int		n;
-// 	const char *start;
-// 
-// 	n = 0;
-// 	va_start(ap, format);
-// 	if (!format)
-// 		n = -1;
-// 	while (n >= 0 && *format)
-// 	{
-// 		start = format;
-// 		if (*start != '%')
-// 			comment_printer(&start, &format, &n);
-// 		else
-// 			arg_processor(&start, &format, &n, &ap);
-// 	}
-// 	va_end(ap);
-// 	return (n);
-// }

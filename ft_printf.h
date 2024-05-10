@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nfujisak <nfujisak@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:54:41 by nfujisak          #+#    #+#             */
-/*   Updated: 2024/05/10 18:23:04 by nfujisak         ###   ########.fr       */
+/*   Updated: 2024/05/10 21:07:05 by nfujisak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-#include "libft/libft.h" //you need this to use external functions!
-#include <stdarg.h> //review header format
+# include "libft/libft.h"
+# include <stdarg.h>
 
 /* ft_print.c */
 int		ft_printf(const char *format, ...);
@@ -36,6 +36,6 @@ int		x_process(unsigned int nb);
 int		bigx_process(unsigned int nb);
 /* ft_base.c */
 char	*base_start(unsigned long long ptr, int base);
-char	*base_change(unsigned long long ptr_alt, int base, char *str, int digits);
+char	*base_change(unsigned long long ptr_alt, int base, char *str, int dig);
 
 #endif

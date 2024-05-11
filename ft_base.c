@@ -6,7 +6,7 @@
 /*   By: nfujisak <nfujisak@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 18:53:57 by nfujisak          #+#    #+#             */
-/*   Updated: 2024/05/10 21:02:12 by nfujisak         ###   ########.fr       */
+/*   Updated: 2024/05/11 18:04:22 by nfujisak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*base_change(unsigned long long ptr_alt, int base, char *str, int dig)
 {
 	while (ptr_alt != 0)
 	{
-		if ((ptr_alt % 16) < 10)
+		if ((ptr_alt % base) < 10)
 			str[dig - 1] = (ptr_alt % base) + 48;
 		else
 			str[dig - 1] = (ptr_alt % base) + 55;

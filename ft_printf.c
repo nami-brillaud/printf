@@ -6,7 +6,7 @@
 /*   By: nfujisak <nfujisak@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:55:20 by nfujisak          #+#    #+#             */
-/*   Updated: 2024/05/11 15:47:25 by nfujisak         ###   ########.fr       */
+/*   Updated: 2024/05/11 17:58:45 by nfujisak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,8 @@ int	specifier_check(const char format, va_list ap)
 		n_add += x_process(va_arg(ap, unsigned int));
 	else if (format == 'X')
 		n_add += bigx_process(va_arg(ap, unsigned int));
-	else if (format == '%')
-		n_add = ft_putchar_n('%');
 	else
-		return (-1);
+		n_add = ft_putchar_n(format);
 	return (n_add);
 }
 
@@ -63,16 +61,16 @@ int	ft_printf(const char *format, ...)
 // #include <assert.h>
 // int	main(void)
 // {
-// 	// void *p = NULL;
-// 	// char c = 'i';
-// 	// char s[] = "haha";
-// 	// int d = INT_MIN;
-// 	// unsigned int u = -10;
-// 	// unsigned int x = 140;
-// 	// unsigned int X = 140;
+// 	void *p = NULL;
+// 	char c = 'i';
+// 	char s[] = "haha";
+// 	int d = INT_MIN;
+// 	unsigned int u = -10;
+// 	unsigned int x = 140;
+// 	unsigned int X = 140;
 // 	/* Mixing  output */
-// 	// ft_printf("Beginning\n c %c\n s %s\n p %p\n d %d\n 
-//u %u\n x %x\n X %X\n % %\n End\n", c, s, p, d, u, x, X);
+// 	ft_printf("Beginning\n c %c\n s %s\n p %p\n d %d\n u %u\n x %x\n 
+//X %X\n % %\n End\n", c, s, p, d, u, x, X);
 // 	/* Random asserts */
 // 	// assert(ft_printf("%p\n", p) == printf("%p\n", p));
 // 	// assert(ft_printf("%p\n", s) == printf("%p\n", s));
@@ -80,7 +78,8 @@ int	ft_printf(const char *format, ...)
 // 	// assert(ft_printf("%d\n", INT_MIN - 1) == printf("%d\n", INT_MIN - 1));
 // 	/* Direct gives big random numbers*/
 // 	// ft_printf("directly u %u\n", -10.5);
-// 	// printf(NULL);
+//	/* Check %m and %% */ 
+//	//	assert(ft_printf("hello %% %m\n") == printf("hello %% %m\n"));
 // 	// system("leaks a.out");
 // 	return (0);
-// 
+// }
